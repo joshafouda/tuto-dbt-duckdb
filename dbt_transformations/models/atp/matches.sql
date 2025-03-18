@@ -16,3 +16,4 @@ SELECT * REPLACE (
     cast(strptime(cast(tourney_date AS VARCHAR), '%Y%m%d') AS date) as tourney_date -- <.>
 )
 FROM noWinLoss
+WHERE surface IS NOT NULL
