@@ -1,0 +1,793 @@
+<pre><font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning</b></font>$ git clone https://github.com/JosueAfouda/tuto-dbt-duckdb.git
+    Clonage dans &apos;tuto-dbt-duckdb&apos;...
+    remote: Enumerating objects: 6, done.
+    remote: Counting objects: 100% (6/6), done.
+    remote: Compressing objects: 100% (4/4), done.
+    remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+    Réception d&apos;objets: 100% (6/6), fait.
+    <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning</b></font>$ cd tuto-dbt-duckdb
+    <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ python3 -m venv .venv
+    <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ source .venv/bin/activate
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ code .
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ pip install dbt-duckdb dbt
+    Collecting dbt-duckdb
+      Downloading dbt_duckdb-1.9.2-py3-none-any.whl.metadata (23 kB)
+    Collecting dbt
+      Downloading dbt-1.0.0.38.32.tar.gz (3.3 kB)
+      Installing build dependencies ... done
+      Getting requirements to build wheel ... done
+      Preparing metadata (pyproject.toml) ... done
+    Collecting dbt-common&lt;2,&gt;=1 (from dbt-duckdb)
+      Downloading dbt_common-1.15.0-py3-none-any.whl.metadata (4.9 kB)
+    Collecting dbt-adapters&lt;2,&gt;=1 (from dbt-duckdb)
+      Downloading dbt_adapters-1.14.1-py3-none-any.whl.metadata (4.5 kB)
+    Collecting duckdb&gt;=1.0.0 (from dbt-duckdb)
+      Downloading duckdb-1.2.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (966 bytes)
+    Collecting dbt-core&gt;=1.8.0 (from dbt-duckdb)
+      Downloading dbt_core-1.9.3-py3-none-any.whl.metadata (4.0 kB)
+    Collecting setuptools&gt;=61.2 (from dbt)
+      Using cached setuptools-76.1.0-py3-none-any.whl.metadata (6.7 kB)
+    Collecting agate&lt;2.0,&gt;=1.0 (from dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading agate-1.13.0-py2.py3-none-any.whl.metadata (3.4 kB)
+    Collecting mashumaro&lt;3.15,&gt;=3.9 (from mashumaro[msgpack]&lt;3.15,&gt;=3.9-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading mashumaro-3.14-py3-none-any.whl.metadata (114 kB)
+         <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">114.4/114.4 kB</font> <font color="#CD0000">4.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Collecting protobuf&lt;6.0,&gt;=5.0 (from dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached protobuf-5.29.3-cp38-abi3-manylinux2014_x86_64.whl.metadata (592 bytes)
+    Collecting pytz&gt;=2015.7 (from dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached pytz-2025.1-py2.py3-none-any.whl.metadata (22 kB)
+    Collecting typing-extensions&lt;5.0,&gt;=4.0 (from dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached typing_extensions-4.12.2-py3-none-any.whl.metadata (3.0 kB)
+    Collecting agate&lt;2.0,&gt;=1.0 (from dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading agate-1.9.1-py2.py3-none-any.whl.metadata (3.2 kB)
+    Collecting colorama&lt;0.5,&gt;=0.3.9 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+    Collecting deepdiff&lt;8.0,&gt;=7.0 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading deepdiff-7.0.1-py3-none-any.whl.metadata (6.8 kB)
+    Collecting isodate&lt;0.7,&gt;=0.6 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading isodate-0.6.1-py2.py3-none-any.whl.metadata (9.6 kB)
+    Collecting jinja2&lt;4,&gt;=3.1.3 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+    Collecting jsonschema&lt;5.0,&gt;=4.0 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading jsonschema-4.23.0-py3-none-any.whl.metadata (7.9 kB)
+    Collecting pathspec&lt;0.13,&gt;=0.9 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+    Collecting python-dateutil&lt;3.0,&gt;=2.0 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+    Collecting requests&lt;3.0.0 (from dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached requests-2.32.3-py3-none-any.whl.metadata (4.6 kB)
+    Collecting click&lt;9.0,&gt;=8.0.2 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Using cached click-8.1.8-py3-none-any.whl.metadata (2.3 kB)
+    Collecting networkx&lt;4.0,&gt;=2.3 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading networkx-3.4.2-py3-none-any.whl.metadata (6.3 kB)
+    Collecting snowplow-tracker&lt;2.0,&gt;=1.0.2 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading snowplow_tracker-1.1.0-py3-none-any.whl.metadata (5.7 kB)
+    Collecting sqlparse&lt;0.6.0,&gt;=0.5.0 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading sqlparse-0.5.3-py3-none-any.whl.metadata (3.9 kB)
+    Collecting dbt-extractor&lt;=0.6,&gt;=0.5.0 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading dbt_extractor-0.5.1-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+    Collecting dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading dbt_semantic_interfaces-0.7.4-py3-none-any.whl.metadata (2.6 kB)
+    Collecting packaging&gt;20.9 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Using cached packaging-24.2-py3-none-any.whl.metadata (3.2 kB)
+    Collecting pyyaml&gt;=6.0 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Using cached PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.1 kB)
+    Collecting daff&gt;=1.3.46 (from dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading daff-1.3.46.tar.gz (149 kB)
+         <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">149.8/149.8 kB</font> <font color="#CD0000">11.9 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+      Installing build dependencies ... done
+      Getting requirements to build wheel ... done
+      Preparing metadata (pyproject.toml) ... done
+    Collecting Babel&gt;=2.0 (from agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading babel-2.17.0-py3-none-any.whl.metadata (2.0 kB)
+    Collecting leather&gt;=0.3.2 (from agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading leather-0.4.0-py2.py3-none-any.whl.metadata (2.8 kB)
+    Collecting parsedatetime!=2.5,&gt;=2.1 (from agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading parsedatetime-2.6-py3-none-any.whl.metadata (4.7 kB)
+    Collecting python-slugify&gt;=1.2.1 (from agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+    Collecting pytimeparse&gt;=1.1.5 (from agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading pytimeparse-1.1.8-py2.py3-none-any.whl.metadata (3.4 kB)
+    Collecting importlib-metadata&lt;7,&gt;=6.0 (from dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading importlib_metadata-6.11.0-py3-none-any.whl.metadata (4.9 kB)
+    Collecting more-itertools&lt;11.0,&gt;=8.0 (from dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading more_itertools-10.6.0-py3-none-any.whl.metadata (37 kB)
+    Collecting pydantic&lt;3,&gt;=1.10 (from dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading pydantic-2.10.6-py3-none-any.whl.metadata (30 kB)
+    Collecting ordered-set&lt;4.2.0,&gt;=4.1.0 (from deepdiff&lt;8.0,&gt;=7.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading ordered_set-4.1.0-py3-none-any.whl.metadata (5.3 kB)
+    Collecting six (from isodate&lt;0.7,&gt;=0.6-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+    Collecting MarkupSafe&gt;=2.0 (from jinja2&lt;4,&gt;=3.1.3-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading MarkupSafe-3.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+    Collecting attrs&gt;=22.2.0 (from jsonschema&lt;5.0,&gt;=4.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading attrs-25.3.0-py3-none-any.whl.metadata (10 kB)
+    Collecting jsonschema-specifications&gt;=2023.03.6 (from jsonschema&lt;5.0,&gt;=4.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl.metadata (3.0 kB)
+    Collecting referencing&gt;=0.28.4 (from jsonschema&lt;5.0,&gt;=4.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading referencing-0.36.2-py3-none-any.whl.metadata (2.8 kB)
+    Collecting rpds-py&gt;=0.7.1 (from jsonschema&lt;5.0,&gt;=4.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading rpds_py-0.23.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+    Collecting msgpack&gt;=0.5.6 (from mashumaro[msgpack]&lt;3.15,&gt;=3.9-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading msgpack-1.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (8.4 kB)
+    Collecting charset-normalizer&lt;4,&gt;=2 (from requests&lt;3.0.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached charset_normalizer-3.4.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+    Collecting idna&lt;4,&gt;=2.5 (from requests&lt;3.0.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
+    Collecting urllib3&lt;3,&gt;=1.21.1 (from requests&lt;3.0.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached urllib3-2.3.0-py3-none-any.whl.metadata (6.5 kB)
+    Collecting certifi&gt;=2017.4.17 (from requests&lt;3.0.0-&gt;dbt-common&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Using cached certifi-2025.1.31-py3-none-any.whl.metadata (2.5 kB)
+    Collecting zipp&gt;=0.5 (from importlib-metadata&lt;7,&gt;=6.0-&gt;dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading zipp-3.21.0-py3-none-any.whl.metadata (3.7 kB)
+    Collecting annotated-types&gt;=0.6.0 (from pydantic&lt;3,&gt;=1.10-&gt;dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+    Collecting pydantic-core==2.27.2 (from pydantic&lt;3,&gt;=1.10-&gt;dbt-semantic-interfaces&lt;0.8,&gt;=0.7.4-&gt;dbt-core&gt;=1.8.0-&gt;dbt-duckdb)
+      Downloading pydantic_core-2.27.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+    Collecting text-unidecode&gt;=1.3 (from python-slugify&gt;=1.2.1-&gt;agate&lt;2.0,&gt;=1.0-&gt;dbt-adapters&lt;2,&gt;=1-&gt;dbt-duckdb)
+      Downloading text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+    Downloading dbt_duckdb-1.9.2-py3-none-any.whl (64 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">64.7/64.7 kB</font> <font color="#CD0000">7.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading dbt_adapters-1.14.1-py3-none-any.whl (165 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">165.7/165.7 kB</font> <font color="#CD0000">16.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading dbt_common-1.15.0-py3-none-any.whl (85 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">85.3/85.3 kB</font> <font color="#CD0000">6.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading dbt_core-1.9.3-py3-none-any.whl (946 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">946.1/946.1 kB</font> <font color="#CD0000">10.0 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading duckdb-1.2.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20.2 MB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">20.2/20.2 MB</font> <font color="#CD0000">18.6 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached setuptools-76.1.0-py3-none-any.whl (1.2 MB)
+    Downloading agate-1.9.1-py2.py3-none-any.whl (95 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">95.1/95.1 kB</font> <font color="#CD0000">5.9 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached click-8.1.8-py3-none-any.whl (98 kB)
+    Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+    Downloading dbt_extractor-0.5.1-cp38-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">1.3/1.3 MB</font> <font color="#CD0000">21.2 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading dbt_semantic_interfaces-0.7.4-py3-none-any.whl (141 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">142.0/142.0 kB</font> <font color="#CD0000">11.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading deepdiff-7.0.1-py3-none-any.whl (80 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">80.8/80.8 kB</font> <font color="#CD0000">8.4 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading isodate-0.6.1-py2.py3-none-any.whl (41 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">41.7/41.7 kB</font> <font color="#CD0000">3.0 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">134.9/134.9 kB</font> <font color="#CD0000">10.2 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading jsonschema-4.23.0-py3-none-any.whl (88 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">88.5/88.5 kB</font> <font color="#CD0000">7.2 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading mashumaro-3.14-py3-none-any.whl (92 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">92.2/92.2 kB</font> <font color="#CD0000">6.9 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading networkx-3.4.2-py3-none-any.whl (1.7 MB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">1.7/1.7 MB</font> <font color="#CD0000">14.0 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached packaging-24.2-py3-none-any.whl (65 kB)
+    Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+    Using cached protobuf-5.29.3-cp38-abi3-manylinux2014_x86_64.whl (319 kB)
+    Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+    Using cached pytz-2025.1-py2.py3-none-any.whl (507 kB)
+    Using cached PyYAML-6.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (767 kB)
+    Using cached requests-2.32.3-py3-none-any.whl (64 kB)
+    Downloading snowplow_tracker-1.1.0-py3-none-any.whl (44 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">44.1/44.1 kB</font> <font color="#CD0000">9.1 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading sqlparse-0.5.3-py3-none-any.whl (44 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">44.4/44.4 kB</font> <font color="#CD0000">7.9 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached typing_extensions-4.12.2-py3-none-any.whl (37 kB)
+    Downloading attrs-25.3.0-py3-none-any.whl (63 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">63.8/63.8 kB</font> <font color="#CD0000">11.3 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading babel-2.17.0-py3-none-any.whl (10.2 MB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">10.2/10.2 MB</font> <font color="#CD0000">21.0 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached certifi-2025.1.31-py3-none-any.whl (166 kB)
+    Using cached charset_normalizer-3.4.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (145 kB)
+    Using cached idna-3.10-py3-none-any.whl (70 kB)
+    Downloading importlib_metadata-6.11.0-py3-none-any.whl (23 kB)
+    Downloading jsonschema_specifications-2024.10.1-py3-none-any.whl (18 kB)
+    Downloading leather-0.4.0-py2.py3-none-any.whl (30 kB)
+    Downloading MarkupSafe-3.0.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+    Downloading more_itertools-10.6.0-py3-none-any.whl (63 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">63.0/63.0 kB</font> <font color="#CD0000">4.8 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading msgpack-1.1.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (401 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">401.4/401.4 kB</font> <font color="#CD0000">16.5 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading ordered_set-4.1.0-py3-none-any.whl (7.6 kB)
+    Downloading parsedatetime-2.6-py3-none-any.whl (42 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">42.5/42.5 kB</font> <font color="#CD0000">4.8 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading pydantic-2.10.6-py3-none-any.whl (431 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">431.7/431.7 kB</font> <font color="#CD0000">34.6 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading pydantic_core-2.27.2-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.0 MB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">2.0/2.0 MB</font> <font color="#CD0000">22.4 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading python_slugify-8.0.4-py2.py3-none-any.whl (10 kB)
+    Downloading pytimeparse-1.1.8-py2.py3-none-any.whl (10.0 kB)
+    Downloading referencing-0.36.2-py3-none-any.whl (26 kB)
+    Downloading rpds_py-0.23.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (391 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">391.6/391.6 kB</font> <font color="#CD0000">33.2 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+    Using cached urllib3-2.3.0-py3-none-any.whl (128 kB)
+    Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+    Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+       <font color="#729C1F">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</font> <font color="#00CD00">78.2/78.2 kB</font> <font color="#CD0000">7.8 MB/s</font> eta <font color="#00CDCD">0:00:00</font>
+    Downloading zipp-3.21.0-py3-none-any.whl (9.6 kB)
+    Building wheels for collected packages: dbt, daff
+      Building wheel for dbt (pyproject.toml) ... done
+      Created wheel for dbt: filename=dbt-1.0.0.38.32-py3-none-any.whl size=2194 sha256=2f57f81944225d0c6c1c91f1fed9ad57f4d665f623dc9f3366a264931872b18f
+      Stored in directory: /home/vant/.cache/pip/wheels/21/bc/4d/5d82cc6039cb44304d4b782327f56d84a1de37df2dcc8f46d7
+      Building wheel for daff (pyproject.toml) ... done
+      Created wheel for daff: filename=daff-1.3.46-py3-none-any.whl size=145578 sha256=40dc5b004429999685b6f49e3f786aeb8b741084cc997d33229669a910742b0e
+      Stored in directory: /home/vant/.cache/pip/wheels/88/ad/49/13ff24b45a6c4e12e5ae48071f7a63d6b78a475b179e01b54e
+    Successfully built dbt daff
+    Installing collected packages: text-unidecode, pytz, pytimeparse, parsedatetime, leather, daff, zipp, urllib3, typing-extensions, sqlparse, six, setuptools, rpds-py, pyyaml, python-slugify, protobuf, pathspec, packaging, ordered-set, networkx, msgpack, more-itertools, MarkupSafe, idna, duckdb, dbt-extractor, colorama, click, charset-normalizer, certifi, Babel, attrs, annotated-types, requests, referencing, python-dateutil, pydantic-core, mashumaro, jinja2, isodate, importlib-metadata, deepdiff, dbt, snowplow-tracker, pydantic, jsonschema-specifications, agate, jsonschema, dbt-semantic-interfaces, dbt-common, dbt-adapters, dbt-core, dbt-duckdb
+    Successfully installed Babel-2.17.0 MarkupSafe-3.0.2 agate-1.9.1 annotated-types-0.7.0 attrs-25.3.0 certifi-2025.1.31 charset-normalizer-3.4.1 click-8.1.8 colorama-0.4.6 daff-1.3.46 dbt-1.0.0.38.32 dbt-adapters-1.14.1 dbt-common-1.15.0 dbt-core-1.9.3 dbt-duckdb-1.9.2 dbt-extractor-0.5.1 dbt-semantic-interfaces-0.7.4 deepdiff-7.0.1 duckdb-1.2.1 idna-3.10 importlib-metadata-6.11.0 isodate-0.6.1 jinja2-3.1.6 jsonschema-4.23.0 jsonschema-specifications-2024.10.1 leather-0.4.0 mashumaro-3.14 more-itertools-10.6.0 msgpack-1.1.0 networkx-3.4.2 ordered-set-4.1.0 packaging-24.2 parsedatetime-2.6 pathspec-0.12.1 protobuf-5.29.3 pydantic-2.10.6 pydantic-core-2.27.2 python-dateutil-2.9.0.post0 python-slugify-8.0.4 pytimeparse-1.1.8 pytz-2025.1 pyyaml-6.0.2 referencing-0.36.2 requests-2.32.3 rpds-py-0.23.1 setuptools-76.1.0 six-1.17.0 snowplow-tracker-1.1.0 sqlparse-0.5.3 text-unidecode-1.3 typing-extensions-4.12.2 urllib3-2.3.0 zipp-3.21.0
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ dbt init .
+    18:06:37  Running with dbt=1.9.3
+    18:06:37  [ConfigFolderDirectory]: Unable to parse logging event dictionary. Failed to parse dir field: expected string or bytes-like object, got &apos;PosixPath&apos;.. Dictionary: {&apos;dir&apos;: PosixPath(&apos;/home/vant/.dbt&apos;)}
+    18:06:37  Creating dbt configuration folder at 
+    . is not a valid project name.
+    Enter a name for your project (letters, digits, underscore): dbt_transformations
+    18:07:04  
+    Your new dbt project &quot;dbt_transformations&quot; was created!
+    
+    For more information on how to configure the profiles.yml file,
+    please consult the dbt documentation here:
+    
+      https://docs.getdbt.com/docs/configure-your-profile
+    
+    One more thing:
+    
+    Need help? Don&apos;t hesitate to reach out to us via GitHub issues or on Slack:
+    
+      https://community.getdbt.com/
+    
+    Happy modeling!
+    
+    18:07:04  Setting up your profile.
+    Which database would you like to use?
+    [1] duckdb
+    
+    (Don&apos;t see the one you want? https://docs.getdbt.com/docs/available-adapters)
+    
+    Enter a number: 1
+    18:07:16  Profile dbt_transformations written to /home/vant/.dbt/profiles.yml using target&apos;s sample configuration. Once updated, you&apos;ll be able to start developing with dbt.
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ touch dbt_transformations/profiles.yml
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ cd dbt_transformations
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ mv models/example models/atp
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ rm models/atp/*.sql
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ touch models/atp/sources.yml
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ pip show dbt
+    Name: dbt
+    Version: 1.0.0.38.32
+    Summary: The dbt Cloud CLI - an ELT tool for running SQL transformations and data models in dbt Cloud. For more documentation on these commands, visit: docs.getdbt.com
+    Home-page: https://www.getdbt.com/
+    Author: dbt Labs
+    Author-email: info@dbtlabs.com
+    License: 
+    Location: /home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages
+    Requires: setuptools
+    Required-by: 
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ touch models/atp/matches.sql
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ mkdir output
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ cd
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~</b></font>$ cd Documents/learning/tuto-dbt-duckdb
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb</b></font>$ cd dbt_transformations
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    18:31:35  Running with dbt=1.9.3
+    18:31:35  Registered adapter: duckdb=1.9.2
+    18:31:35  Unable to do partial parsing because saved manifest not found. Starting full parse.
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Did not find matching node for patch with name &apos;my_first_dbt_model&apos; in the &apos;models&apos; section of file &apos;models/atp/schema.yml&apos;
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Did not find matching node for patch with name &apos;my_second_dbt_model&apos; in the &apos;models&apos; section of file &apos;models/atp/schema.yml&apos;
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.unique_my_first_dbt_model_id.16e066b321&apos; (models/atp/schema.yml) depends on a node named &apos;my_first_dbt_model&apos; in package &apos;&apos; which was not found
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.not_null_my_first_dbt_model_id.5fb22c2710&apos; (models/atp/schema.yml) depends on a node named &apos;my_first_dbt_model&apos; in package &apos;&apos; which was not found
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.unique_my_second_dbt_model_id.57a0f8c493&apos; (models/atp/schema.yml) depends on a node named &apos;my_second_dbt_model&apos; in package &apos;&apos; which was not found
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.not_null_my_second_dbt_model_id.151b76d778&apos; (models/atp/schema.yml) depends on a node named &apos;my_second_dbt_model&apos; in package &apos;&apos; which was not found
+    18:31:36  [<font color="#CDCD00">WARNING</font>]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+    There are 1 unused configuration paths:
+    - models.dbt_transformations.example
+    18:31:37  Found 1 model, 1 source, 426 macros
+    18:31:37  
+    18:31:37  Concurrency: 1 threads (target=&apos;dev&apos;)
+    18:31:37  
+    18:31:37  1 of 1 START sql external model main.matches ................................... [RUN]
+    18:31:38  1 of 1 ERROR creating sql external model main.matches .......................... [<font color="#CD0000">ERROR</font> in 1.04s]
+    18:31:38  
+    18:31:38  Finished running 1 external model in 0 hours 0 minutes and 1.27 seconds (1.27s).
+    18:31:38  
+    18:31:38  <font color="#CD0000">Completed with 1 error, 0 partial successes, and 0 warnings:</font>
+    18:31:38  
+    18:31:38    Runtime Error in model matches (models/atp/matches.sql)
+      Binder Error: No function matches the given name and argument types &apos;strptime(BIGINT, STRING_LITERAL)&apos;. You might need to add explicit type casts.
+          Candidate functions:
+          strptime(VARCHAR, VARCHAR) -&gt; TIMESTAMP
+          strptime(VARCHAR, VARCHAR[]) -&gt; TIMESTAMP
+      
+      
+      LINE 22:     cast(strptime(tourney_date, &apos;%Y%m%d&apos;) AS date) as tourney_date...
+                        ^
+    18:31:38  
+    18:31:38  Done. PASS=0 WARN=0 ERROR=1 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    18:35:06  Running with dbt=1.9.3
+    18:35:07  Registered adapter: duckdb=1.9.2
+    18:35:07  [<font color="#CDCD00">WARNING</font>]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+    There are 1 unused configuration paths:
+    - models.dbt_transformations.example
+    18:35:07  Found 1 model, 1 source, 426 macros
+    18:35:07  
+    18:35:07  Concurrency: 1 threads (target=&apos;dev&apos;)
+    18:35:07  
+    18:35:07  1 of 1 START sql external model main.matches ................................... [RUN]
+    18:35:08  1 of 1 OK created sql external model main.matches .............................. [<font color="#00CD00">OK</font> in 0.58s]
+    18:35:08  
+    18:35:08  Finished running 1 external model in 0 hours 0 minutes and 0.72 seconds (0.72s).
+    18:35:08  
+    18:35:08  <font color="#00CD00">Completed successfully</font>
+    18:35:08  
+    18:35:08  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    18:40:28  Running with dbt=1.9.3
+    18:40:29  Registered adapter: duckdb=1.9.2
+    18:40:29  Unable to do partial parsing because a project config has changed
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Did not find matching node for patch with name &apos;my_first_dbt_model&apos; in the &apos;models&apos; section of file &apos;models/atp/schema.yml&apos;
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Did not find matching node for patch with name &apos;my_second_dbt_model&apos; in the &apos;models&apos; section of file &apos;models/atp/schema.yml&apos;
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.unique_my_first_dbt_model_id.16e066b321&apos; (models/atp/schema.yml) depends on a node named &apos;my_first_dbt_model&apos; in package &apos;&apos; which was not found
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.not_null_my_first_dbt_model_id.5fb22c2710&apos; (models/atp/schema.yml) depends on a node named &apos;my_first_dbt_model&apos; in package &apos;&apos; which was not found
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.unique_my_second_dbt_model_id.57a0f8c493&apos; (models/atp/schema.yml) depends on a node named &apos;my_second_dbt_model&apos; in package &apos;&apos; which was not found
+    18:40:30  [<font color="#CDCD00">WARNING</font>]: Test &apos;test.dbt_transformations.not_null_my_second_dbt_model_id.151b76d778&apos; (models/atp/schema.yml) depends on a node named &apos;my_second_dbt_model&apos; in package &apos;&apos; which was not found
+    18:40:30  Found 1 model, 1 source, 426 macros
+    18:40:30  
+    18:40:30  Concurrency: 1 threads (target=&apos;dev&apos;)
+    18:40:30  
+    18:40:30  1 of 1 START sql external model main.matches ................................... [RUN]
+    18:40:31  1 of 1 OK created sql external model main.matches .............................. [<font color="#00CD00">OK</font> in 0.82s]
+    18:40:31  
+    18:40:31  Finished running 1 external model in 0 hours 0 minutes and 1.01 seconds (1.01s).
+    18:40:31  
+    18:40:31  <font color="#00CD00">Completed successfully</font>
+    18:40:31  
+    18:40:31  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ duckdb
+    v1.2.1 8e52ec4395
+    Enter &quot;.help&quot; for usage hints.
+    Connected to a <b>transient in-memory database</b>.
+    Use &quot;.open FILENAME&quot; to reopen on a persistent database.
+    D <font color="#00CD00">SELECT </font>COUNT(*) <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos;</font>;
+    <font color="#7F7F7F">┌──────────────┐</font>
+    <font color="#7F7F7F">│ </font>count_star()<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│    </font>int64<font color="#7F7F7F">     │</font>
+    <font color="#7F7F7F">├──────────────┤</font>
+    <font color="#7F7F7F">│     </font>2986<font color="#7F7F7F">     │</font>
+    <font color="#7F7F7F">└──────────────┘</font>
+    D <font color="#00CD00">SELECT </font>* <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos; </font><font color="#00CD00">LIMIT </font><font color="#CDCD00">5</font>;
+    <font color="#7F7F7F">┌────────────┬──────────────┬─────────┬───────────────┬──────────────┬───────────┬───┬─────────┬─────────────┬────────────────────┬────────────┬───────────────────┐</font>
+    <font color="#7F7F7F">│ </font>tourney_id<font color="#7F7F7F"> │ </font>tourney_name<font color="#7F7F7F"> │ </font>surface<font color="#7F7F7F"> │ </font>tourney_level<font color="#7F7F7F"> │ </font>tourney_date<font color="#7F7F7F"> │ </font>match_num<font color="#7F7F7F"> │ … │ </font>minutes<font color="#7F7F7F"> │ </font>winner_rank<font color="#7F7F7F"> │ </font>winner_rank_points<font color="#7F7F7F"> │ </font>loser_rank<font color="#7F7F7F"> │ </font>loser_rank_points<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│  </font>varchar<font color="#7F7F7F">   │   </font>varchar<font color="#7F7F7F">    │ </font>varchar<font color="#7F7F7F"> │    </font>varchar<font color="#7F7F7F">    │     </font>date<font color="#7F7F7F">     │   </font>int64<font color="#7F7F7F">   │   │  </font>int64<font color="#7F7F7F">  │    </font>int64<font color="#7F7F7F">    │       </font>int64<font color="#7F7F7F">        │   </font>int64<font color="#7F7F7F">    │       </font>int64<font color="#7F7F7F">       │</font>
+    <font color="#7F7F7F">├────────────┼──────────────┼─────────┼───────────────┼──────────────┼───────────┼───┼─────────┼─────────────┼────────────────────┼────────────┼───────────────────┤</font>
+    <font color="#7F7F7F">│ </font>2023-9900<font color="#7F7F7F">  │ </font>United Cup<font color="#7F7F7F">   │ </font>Hard<font color="#7F7F7F">    │ </font>A<font color="#7F7F7F">             │ </font>2023-01-02<font color="#7F7F7F">   │       </font>300<font color="#7F7F7F"> │ … │     </font>135<font color="#7F7F7F"> │           </font>9<font color="#7F7F7F"> │               </font>3355<font color="#7F7F7F"> │         </font>16<font color="#7F7F7F"> │              </font>2375<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│ </font>2023-9900<font color="#7F7F7F">  │ </font>United Cup<font color="#7F7F7F">   │ </font>Hard<font color="#7F7F7F">    │ </font>A<font color="#7F7F7F">             │ </font>2023-01-02<font color="#7F7F7F">   │       </font>299<font color="#7F7F7F"> │ … │      </font>34<font color="#7F7F7F"> │          </font>19<font color="#7F7F7F"> │               </font>2000<font color="#7F7F7F"> │         </font>23<font color="#7F7F7F"> │              </font>1865<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│ </font>2023-9900<font color="#7F7F7F">  │ </font>United Cup<font color="#7F7F7F">   │ </font>Hard<font color="#7F7F7F">    │ </font>A<font color="#7F7F7F">             │ </font>2023-01-02<font color="#7F7F7F">   │       </font>296<font color="#7F7F7F"> │ … │     </font>104<font color="#7F7F7F"> │           </font>9<font color="#7F7F7F"> │               </font>3355<font color="#7F7F7F"> │         </font>10<font color="#7F7F7F"> │              </font>2905<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│ </font>2023-9900<font color="#7F7F7F">  │ </font>United Cup<font color="#7F7F7F">   │ </font>Hard<font color="#7F7F7F">    │ </font>A<font color="#7F7F7F">             │ </font>2023-01-02<font color="#7F7F7F">   │       </font>295<font color="#7F7F7F"> │ … │      </font>79<font color="#7F7F7F"> │          </font>19<font color="#7F7F7F"> │               </font>2000<font color="#7F7F7F"> │        </font>245<font color="#7F7F7F"> │               </font>220<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│ </font>2023-9900<font color="#7F7F7F">  │ </font>United Cup<font color="#7F7F7F">   │ </font>Hard<font color="#7F7F7F">    │ </font>A<font color="#7F7F7F">             │ </font>2023-01-02<font color="#7F7F7F">   │       </font>292<font color="#7F7F7F"> │ … │     </font>155<font color="#7F7F7F"> │           </font>4<font color="#7F7F7F"> │               </font>5550<font color="#7F7F7F"> │         </font>16<font color="#7F7F7F"> │              </font>2375<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">├────────────┴──────────────┴─────────┴───────────────┴──────────────┴───────────┴───┴─────────┴─────────────┴────────────────────┴────────────┴───────────────────┤</font>
+    <font color="#7F7F7F">│ </font>5 rows<font color="#7F7F7F">                                                                                                                                     </font>30 columns (11 shown)<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">└──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</font>
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    19:30:25  Running with dbt=1.9.3
+    19:30:26  Registered adapter: duckdb=1.9.2
+    19:30:26  Found 1 model, 1 source, 426 macros
+    19:30:26  
+    19:30:26  Concurrency: 1 threads (target=&apos;dev&apos;)
+    19:30:26  
+    19:30:26  1 of 1 START sql external model main.matches ................................... [RUN]
+    19:30:27  1 of 1 OK created sql external model main.matches .............................. [<font color="#00CD00">OK</font> in 0.56s]
+    19:30:27  
+    19:30:27  Finished running 1 external model in 0 hours 0 minutes and 0.70 seconds (0.70s).
+    19:30:27  
+    19:30:27  <font color="#00CD00">Completed successfully</font>
+    19:30:27  
+    19:30:27  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:06:06  Running with dbt=1.9.3
+    21:06:06  Registered adapter: duckdb=1.9.2
+    21:06:06  Found 1 model, 5 data tests, 1 source, 426 macros
+    21:06:06  
+    21:06:06  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:06:06  
+    21:06:06  1 of 5 START test accepted_values_matches_surface__Grass__Hard__Clay ........... [RUN]
+    21:06:06  1 of 5 PASS accepted_values_matches_surface__Grass__Hard__Clay ................. [<font color="#00CD00">PASS</font> in 0.03s]
+    21:06:06  2 of 5 START test not_null_matches_loser_id .................................... [RUN]
+    21:06:06  2 of 5 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:06:06  3 of 5 START test not_null_matches_surface ..................................... [RUN]
+    21:06:06  3 of 5 FAIL 53 not_null_matches_surface ........................................ [<font color="#CD0000">FAIL 53</font> in 0.02s]
+    21:06:06  4 of 5 START test not_null_matches_tourney_id .................................. [RUN]
+    21:06:06  4 of 5 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.01s]
+    21:06:06  5 of 5 START test not_null_matches_winner_id ................................... [RUN]
+    21:06:06  5 of 5 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:06:06  
+    21:06:06  Finished running 5 data tests in 0 hours 0 minutes and 0.16 seconds (0.16s).
+    21:06:06  
+    21:06:06  <font color="#CD0000">Completed with 1 error, 0 partial successes, and 0 warnings:</font>
+    21:06:06  
+    21:06:06  <font color="#CD0000">Failure in test not_null_matches_surface (models/atp/schema.yml)</font>
+    21:06:06    Got 53 results, configured to fail if != 0
+    21:06:06  
+    21:06:06    compiled code at target/compiled/dbt_transformations/models/atp/schema.yml/not_null_matches_surface.sql
+    21:06:06  
+    21:06:06  Done. PASS=4 WARN=0 ERROR=1 SKIP=0 TOTAL=5
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ duckdb
+    v1.2.1 8e52ec4395
+    Enter &quot;.help&quot; for usage hints.
+    Connected to a <b>transient in-memory database</b>.
+    Use &quot;.open FILENAME&quot; to reopen on a persistent database.
+    D <font color="#00CD00">SELECT DISTINCT </font>surface <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos;</font>;
+    <font color="#7F7F7F">┌─────────┐</font>
+    <font color="#7F7F7F">│ </font>surface<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│ </font>varchar<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">├─────────┤</font>
+    <font color="#7F7F7F">│ </font>Grass<font color="#7F7F7F">   │</font>
+    <font color="#7F7F7F">│ NULL    │</font>
+    <font color="#7F7F7F">│ </font>Hard<font color="#7F7F7F">    │</font>
+    <font color="#7F7F7F">│ </font>Clay<font color="#7F7F7F">    │</font>
+    <font color="#7F7F7F">└─────────┘</font>
+    D <font color="#00CD00">SELECT </font>* <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos; </font><font color="#00CD00">WHERE </font>tourney_id <font color="#00CD00">IS NULL</font>;
+    <font color="#7F7F7F">┌────────────┬──────────────┬─────────┬───────────────┬───┬────────────────────┬────────────┬───────────────────┐</font>
+    <font color="#7F7F7F">│ </font>tourney_id<font color="#7F7F7F"> │ </font>tourney_name<font color="#7F7F7F"> │ </font>surface<font color="#7F7F7F"> │ </font>tourney_level<font color="#7F7F7F"> │ … │ </font>winner_rank_points<font color="#7F7F7F"> │ </font>loser_rank<font color="#7F7F7F"> │ </font>loser_rank_points<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│  </font>varchar<font color="#7F7F7F">   │   </font>varchar<font color="#7F7F7F">    │ </font>varchar<font color="#7F7F7F"> │    </font>varchar<font color="#7F7F7F">    │   │       </font>int64<font color="#7F7F7F">        │   </font>int64<font color="#7F7F7F">    │       </font>int64<font color="#7F7F7F">       │</font>
+    <font color="#7F7F7F">├────────────┴──────────────┴─────────┴───────────────┴───┴────────────────────┴────────────┴───────────────────┤</font>
+    <font color="#7F7F7F">│                                                    </font>0 rows<font color="#7F7F7F">                                                     │</font>
+    <font color="#7F7F7F">└───────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</font>
+    D <font color="#00CD00">SELECT </font>* <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos; </font><font color="#00CD00">WHERE </font>winner_id <font color="#00CD00">IS NULL</font>;
+    <font color="#7F7F7F">┌────────────┬──────────────┬─────────┬───────────────┬───┬────────────────────┬────────────┬───────────────────┐</font>
+    <font color="#7F7F7F">│ </font>tourney_id<font color="#7F7F7F"> │ </font>tourney_name<font color="#7F7F7F"> │ </font>surface<font color="#7F7F7F"> │ </font>tourney_level<font color="#7F7F7F"> │ … │ </font>winner_rank_points<font color="#7F7F7F"> │ </font>loser_rank<font color="#7F7F7F"> │ </font>loser_rank_points<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│  </font>varchar<font color="#7F7F7F">   │   </font>varchar<font color="#7F7F7F">    │ </font>varchar<font color="#7F7F7F"> │    </font>varchar<font color="#7F7F7F">    │   │       </font>int64<font color="#7F7F7F">        │   </font>int64<font color="#7F7F7F">    │       </font>int64<font color="#7F7F7F">       │</font>
+    <font color="#7F7F7F">├────────────┴──────────────┴─────────┴───────────────┴───┴────────────────────┴────────────┴───────────────────┤</font>
+    <font color="#7F7F7F">│                                                    </font>0 rows<font color="#7F7F7F">                                                     │</font>
+    <font color="#7F7F7F">└───────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</font>
+    D <font color="#00CD00">SELECT </font>* <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos; </font><font color="#00CD00">WHERE </font>loser_id <font color="#00CD00">IS NULL</font>;
+    <font color="#7F7F7F">┌────────────┬──────────────┬─────────┬───────────────┬───┬────────────────────┬────────────┬───────────────────┐</font>
+    <font color="#7F7F7F">│ </font>tourney_id<font color="#7F7F7F"> │ </font>tourney_name<font color="#7F7F7F"> │ </font>surface<font color="#7F7F7F"> │ </font>tourney_level<font color="#7F7F7F"> │ … │ </font>winner_rank_points<font color="#7F7F7F"> │ </font>loser_rank<font color="#7F7F7F"> │ </font>loser_rank_points<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│  </font>varchar<font color="#7F7F7F">   │   </font>varchar<font color="#7F7F7F">    │ </font>varchar<font color="#7F7F7F"> │    </font>varchar<font color="#7F7F7F">    │   │       </font>int64<font color="#7F7F7F">        │   </font>int64<font color="#7F7F7F">    │       </font>int64<font color="#7F7F7F">       │</font>
+    <font color="#7F7F7F">├────────────┴──────────────┴─────────┴───────────────┴───┴────────────────────┴────────────┴───────────────────┤</font>
+    <font color="#7F7F7F">│                                                    </font>0 rows<font color="#7F7F7F">                                                     │</font>
+    <font color="#7F7F7F">└───────────────────────────────────────────────────────────────────────────────────────────────────────────────┘</font>
+    D <font color="#00CD00">SELECT </font>COUNT(*) <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos; </font><font color="#00CD00">WHERE </font>surface <font color="#00CD00">IS NULL</font>;
+    <font color="#7F7F7F">┌──────────────┐</font>
+    <font color="#7F7F7F">│ </font>count_star()<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│    </font>int64<font color="#7F7F7F">     │</font>
+    <font color="#7F7F7F">├──────────────┤</font>
+    <font color="#7F7F7F">│      </font>53<font color="#7F7F7F">      │</font>
+    <font color="#7F7F7F">└──────────────┘</font>
+    D <font color="#00CD00">.exit</font>
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:19:27  Running with dbt=1.9.3
+    21:19:27  Registered adapter: duckdb=1.9.2
+    21:19:27  Found 1 model, 4 data tests, 1 source, 426 macros
+    21:19:27  
+    21:19:27  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:19:27  
+    21:19:27  1 of 4 START test accepted_values_matches_surface__Grass__Hard__Clay ........... [RUN]
+    21:19:27  1 of 4 PASS accepted_values_matches_surface__Grass__Hard__Clay ................. [<font color="#00CD00">PASS</font> in 0.03s]
+    21:19:27  2 of 4 START test not_null_matches_loser_id .................................... [RUN]
+    21:19:27  2 of 4 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:19:27  3 of 4 START test not_null_matches_tourney_id .................................. [RUN]
+    21:19:27  3 of 4 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.01s]
+    21:19:27  4 of 4 START test not_null_matches_winner_id ................................... [RUN]
+    21:19:27  4 of 4 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.01s]
+    21:19:27  
+    21:19:27  Finished running 4 data tests in 0 hours 0 minutes and 0.14 seconds (0.14s).
+    21:19:27  
+    21:19:27  <font color="#00CD00">Completed successfully</font>
+    21:19:27  
+    21:19:27  Done. PASS=4 WARN=0 ERROR=0 SKIP=0 TOTAL=4
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ touch packages.yml
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt deps
+    21:21:06  Running with dbt=1.9.3
+    21:21:06  [<font color="#CDCD00">WARNING</font>]: Deprecated functionality
+    The `calogica/dbt_expectations` package is deprecated in favor of
+    `metaplane/dbt_expectations`. Please update your `packages.yml` configuration to
+    use `metaplane/dbt_expectations` instead.
+    21:21:06  Updating lock file in file path: /home/vant/Documents/learning/tuto-dbt-duckdb/dbt_transformations/package-lock.yml
+    21:21:06  Installing calogica/dbt_expectations
+    21:21:07  Installed from version 0.10.1
+    21:21:07  Updated version available: 0.10.4
+    21:21:07  Installing calogica/dbt_date
+    21:21:07  Installed from version 0.10.1
+    21:21:07  Up to date!
+    21:21:07  
+    21:21:07  Updates available for packages: [&apos;calogica/dbt_expectations&apos;]                 
+    Update your versions in packages.yml, then run dbt deps
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt deps
+    21:22:09  Running with dbt=1.9.3
+    21:22:10  [<font color="#CDCD00">WARNING</font>]: Deprecated functionality
+    The `calogica/dbt_date` package is deprecated in favor of
+    `godatadriven/dbt_date`. Please update your `packages.yml` configuration to use
+    `godatadriven/dbt_date` instead.
+    21:22:10  Updating lock file in file path: /home/vant/Documents/learning/tuto-dbt-duckdb/dbt_transformations/package-lock.yml
+    21:22:10  Installing metaplane/dbt_expectations
+    21:22:11  Installed from version 0.10.1
+    21:22:11  Updated version available: 0.10.8
+    21:22:11  Installing calogica/dbt_date
+    21:22:11  Installed from version 0.10.1
+    21:22:11  Up to date!
+    21:22:11  
+    21:22:11  Updates available for packages: [&apos;metaplane/dbt_expectations&apos;]                 
+    Update your versions in packages.yml, then run dbt deps
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt deps
+    21:22:28  Running with dbt=1.9.3
+    21:22:28  [<font color="#CDCD00">WARNING</font>]: Deprecated functionality
+    The `calogica/dbt_date` package is deprecated in favor of
+    `godatadriven/dbt_date`. Please update your `packages.yml` configuration to use
+    `godatadriven/dbt_date` instead.
+    21:22:28  Installing metaplane/dbt_expectations
+    21:22:29  Installed from version 0.10.1
+    21:22:29  Updated version available: 0.10.8
+    21:22:29  Installing calogica/dbt_date
+    21:22:29  Installed from version 0.10.1
+    21:22:29  Up to date!
+    21:22:29  
+    21:22:29  Updates available for packages: [&apos;metaplane/dbt_expectations&apos;]                 
+    Update your versions in packages.yml, then run dbt deps
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt deps
+    21:22:41  Running with dbt=1.9.3
+    21:22:41  Encountered an error:
+    &apos;version&apos;
+    21:22:41  Traceback (most recent call last):
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/cli/requires.py&quot;, line 153, in wrapper
+        result, success = func(*args, **kwargs)
+                          ^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/cli/requires.py&quot;, line 103, in wrapper
+        return func(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/cli/requires.py&quot;, line 218, in wrapper
+        return func(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/cli/requires.py&quot;, line 251, in wrapper
+        project = load_project(
+                  ^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/config/runtime.py&quot;, line 59, in load_project
+        project = Project.from_project_root(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/config/project.py&quot;, line 752, in from_project_root
+        return partial.render(renderer)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/config/project.py&quot;, line 321, in render
+        return self.create_project(rendered)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/config/project.py&quot;, line 468, in create_project
+        packages: PackageConfig = package_config_from_data(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/config/project.py&quot;, line 139, in package_config_from_data
+        PackageConfig.validate(packages_data)
+      File &quot;/home/vant/Documents/learning/tuto-dbt-duckdb/.venv/lib/python3.12/site-packages/dbt/contracts/project.py&quot;, line 129, in validate
+        if not package[&quot;version&quot;]:
+               ~~~~~~~^^^^^^^^^^^
+    KeyError: &apos;version&apos;
+    
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt deps
+    21:23:36  Running with dbt=1.9.3
+    21:23:36  Updating lock file in file path: /home/vant/Documents/learning/tuto-dbt-duckdb/dbt_transformations/package-lock.yml
+    21:23:36  Installing metaplane/dbt_expectations
+    21:23:37  Installed from version 0.10.8
+    21:23:37  Up to date!
+    21:23:37  Installing godatadriven/dbt_date
+    21:23:37  Installed from version 0.11.0
+    21:23:37  Up to date!
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:26:19  Running with dbt=1.9.3
+    21:26:20  Registered adapter: duckdb=1.9.2
+    21:26:20  Unable to do partial parsing because a project dependency has been added
+    21:26:21  Found 1 model, 6 data tests, 1 source, 693 macros
+    21:26:21  
+    21:26:21  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:26:21  
+    21:26:21  1 of 6 START test accepted_values_matches_surface__Grass__Hard__Clay ........... [RUN]
+    21:26:21  1 of 6 PASS accepted_values_matches_surface__Grass__Hard__Clay ................. [<font color="#00CD00">PASS</font> in 0.03s]
+    21:26:21  2 of 6 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_2023_01_01_AS_DATE_  [RUN]
+    21:26:21  2 of 6 PASS dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_2023_01_01_AS_DATE_  [<font color="#00CD00">PASS</font> in 0.02s]
+    21:26:21  3 of 6 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:26:21  3 of 6 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.04s]
+    21:26:21  4 of 6 START test not_null_matches_loser_id .................................... [RUN]
+    21:26:21  4 of 6 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:26:21  5 of 6 START test not_null_matches_tourney_id .................................. [RUN]
+    21:26:21  5 of 6 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.01s]
+    21:26:21  6 of 6 START test not_null_matches_winner_id ................................... [RUN]
+    21:26:21  6 of 6 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.01s]
+    21:26:21  
+    21:26:21  Finished running 6 data tests in 0 hours 0 minutes and 0.20 seconds (0.20s).
+    21:26:21  
+    21:26:21  <font color="#00CD00">Completed successfully</font>
+    21:26:21  
+    21:26:21  Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    21:39:05  Running with dbt=1.9.3
+    21:39:05  Registered adapter: duckdb=1.9.2
+    21:39:05  Found 1 model, 6 data tests, 1 source, 693 macros
+    21:39:05  
+    21:39:05  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:39:05  
+    21:39:06  1 of 1 START sql external model main.matches ................................... [RUN]
+    21:39:14  1 of 1 OK created sql external model main.matches .............................. [<font color="#00CD00">OK</font> in 8.17s]
+    21:39:14  
+    21:39:14  Finished running 1 external model in 0 hours 0 minutes and 8.25 seconds (8.25s).
+    21:39:14  
+    21:39:14  <font color="#00CD00">Completed successfully</font>
+    21:39:14  
+    21:39:14  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ duckdb
+    v1.2.1 8e52ec4395
+    Enter &quot;.help&quot; for usage hints.
+    Connected to a <b>transient in-memory database</b>.
+    Use &quot;.open FILENAME&quot; to reopen on a persistent database.
+    D <font color="#00CD00">SELECT </font>count(*) <font color="#00CD00">FROM </font><font color="#CDCD00">&apos;output/matches.parquet&apos;</font>;
+    <font color="#7F7F7F">┌──────────────┐</font>
+    <font color="#7F7F7F">│ </font>count_star()<font color="#7F7F7F"> │</font>
+    <font color="#7F7F7F">│    </font>int64<font color="#7F7F7F">     │</font>
+    <font color="#7F7F7F">├──────────────┤</font>
+    <font color="#7F7F7F">│    </font>188934<font color="#7F7F7F">    │</font>
+    <font color="#7F7F7F">└──────────────┘</font>
+    D dbt test
+    <font color="#7F7F7F">  </font>.exit
+    <font color="#00CD00">  SELECT </font><font color="#CDCD00">1</font>;
+    <font color="#CD0000"><b>Parser Error:</b></font>
+    syntax error at or near &quot;<font color="#CDCD00">dbt</font>&quot;
+    
+    <b>LINE 1:</b> <font color="#CD0000"><b>dbt </b></font>test
+    <font color="#CD0000"><b>        ^</b></font>
+    D <font color="#00CD00">.exit</font>
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:40:58  Running with dbt=1.9.3
+    21:40:58  Registered adapter: duckdb=1.9.2
+    21:40:58  Found 1 model, 6 data tests, 1 source, 693 macros
+    21:40:58  
+    21:40:58  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:40:58  
+    21:40:58  1 of 6 START test accepted_values_matches_surface__Grass__Hard__Clay ........... [RUN]
+    21:40:58  1 of 6 FAIL 1 accepted_values_matches_surface__Grass__Hard__Clay ............... [<font color="#CD0000">FAIL 1</font> in 0.04s]
+    21:40:58  2 of 6 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_2023_01_01_AS_DATE_  [RUN]
+    21:40:58  2 of 6 FAIL 1 dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_2023_01_01_AS_DATE_  [<font color="#CD0000">FAIL 1</font> in 0.03s]
+    21:40:58  3 of 6 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:40:58  3 of 6 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.04s]
+    21:40:58  4 of 6 START test not_null_matches_loser_id .................................... [RUN]
+    21:40:58  4 of 6 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:40:58  5 of 6 START test not_null_matches_tourney_id .................................. [RUN]
+    21:40:58  5 of 6 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.02s]
+    21:40:58  6 of 6 START test not_null_matches_winner_id ................................... [RUN]
+    21:40:58  6 of 6 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:40:58  
+    21:40:58  Finished running 6 data tests in 0 hours 0 minutes and 0.23 seconds (0.23s).
+    21:40:58  
+    21:40:58  <font color="#CD0000">Completed with 2 errors, 0 partial successes, and 0 warnings:</font>
+    21:40:58  
+    21:40:58  <font color="#CD0000">Failure in test accepted_values_matches_surface__Grass__Hard__Clay (models/atp/schema.yml)</font>
+    21:40:58    Got 1 result, configured to fail if != 0
+    21:40:58  
+    21:40:58    compiled code at target/compiled/dbt_transformations/models/atp/schema.yml/accepted_values_matches_surface__Grass__Hard__Clay.sql
+    21:40:58  
+    21:40:58  <font color="#CD0000">Failure in test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_2023_01_01_AS_DATE_ (models/atp/schema.yml)</font>
+    21:40:58    Got 1 result, configured to fail if != 0
+    21:40:58  
+    21:40:58    compiled code at target/compiled/dbt_transformations/models/atp/schema.yml/dbt_expectations_expect_column_d370eded0e6ff7c50bdb8daa813e7b01.sql
+    21:40:58  
+    21:40:58  Done. PASS=4 WARN=0 ERROR=2 SKIP=0 TOTAL=6
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:42:03  Running with dbt=1.9.3
+    21:42:03  Registered adapter: duckdb=1.9.2
+    21:42:04  Found 1 model, 6 data tests, 1 source, 693 macros
+    21:42:04  
+    21:42:04  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:42:04  
+    21:42:04  1 of 6 START test accepted_values_matches_surface__Grass__Hard__Clay ........... [RUN]
+    21:42:04  1 of 6 FAIL 1 accepted_values_matches_surface__Grass__Hard__Clay ............... [<font color="#CD0000">FAIL 1</font> in 0.03s]
+    21:42:04  2 of 6 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [RUN]
+    21:42:04  2 of 6 PASS dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:04  3 of 6 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:42:04  3 of 6 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.04s]
+    21:42:04  4 of 6 START test not_null_matches_loser_id .................................... [RUN]
+    21:42:04  4 of 6 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:04  5 of 6 START test not_null_matches_tourney_id .................................. [RUN]
+    21:42:04  5 of 6 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.06s]
+    21:42:04  6 of 6 START test not_null_matches_winner_id ................................... [RUN]
+    21:42:04  6 of 6 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:04  
+    21:42:04  Finished running 6 data tests in 0 hours 0 minutes and 0.25 seconds (0.25s).
+    21:42:04  
+    21:42:04  <font color="#CD0000">Completed with 1 error, 0 partial successes, and 0 warnings:</font>
+    21:42:04  
+    21:42:04  <font color="#CD0000">Failure in test accepted_values_matches_surface__Grass__Hard__Clay (models/atp/schema.yml)</font>
+    21:42:04    Got 1 result, configured to fail if != 0
+    21:42:04  
+    21:42:04    compiled code at target/compiled/dbt_transformations/models/atp/schema.yml/accepted_values_matches_surface__Grass__Hard__Clay.sql
+    21:42:04  
+    21:42:04  Done. PASS=5 WARN=0 ERROR=1 SKIP=0 TOTAL=6
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:42:47  Running with dbt=1.9.3
+    21:42:48  Registered adapter: duckdb=1.9.2
+    21:42:48  Found 1 model, 6 data tests, 1 source, 693 macros
+    21:42:48  
+    21:42:48  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:42:48  
+    21:42:48  1 of 6 START test accepted_values_matches_surface__Grass__Hard__Clay__Carpet ... [RUN]
+    21:42:48  1 of 6 PASS accepted_values_matches_surface__Grass__Hard__Clay__Carpet ......... [<font color="#00CD00">PASS</font> in 0.03s]
+    21:42:48  2 of 6 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [RUN]
+    21:42:48  2 of 6 PASS dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:48  3 of 6 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:42:48  3 of 6 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.04s]
+    21:42:48  4 of 6 START test not_null_matches_loser_id .................................... [RUN]
+    21:42:48  4 of 6 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:48  5 of 6 START test not_null_matches_tourney_id .................................. [RUN]
+    21:42:48  5 of 6 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.06s]
+    21:42:48  6 of 6 START test not_null_matches_winner_id ................................... [RUN]
+    21:42:48  6 of 6 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:42:48  
+    21:42:48  Finished running 6 data tests in 0 hours 0 minutes and 0.25 seconds (0.25s).
+    21:42:48  
+    21:42:48  <font color="#00CD00">Completed successfully</font>
+    21:42:48  
+    21:42:48  Done. PASS=6 WARN=0 ERROR=0 SKIP=0 TOTAL=6
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt run
+    21:47:35  Running with dbt=1.9.3
+    21:47:35  Registered adapter: duckdb=1.9.2
+    21:47:36  Found 1 model, 7 data tests, 1 source, 693 macros
+    21:47:36  
+    21:47:36  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:47:36  
+    21:47:36  1 of 1 START sql external model main.matches ................................... [RUN]
+    21:47:41  1 of 1 OK created sql external model main.matches .............................. [<font color="#00CD00">OK</font> in 4.88s]
+    21:47:41  
+    21:47:41  Finished running 1 external model in 0 hours 0 minutes and 4.96 seconds (4.96s).
+    21:47:41  
+    21:47:41  <font color="#00CD00">Completed successfully</font>
+    21:47:41  
+    21:47:41  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:47:46  Running with dbt=1.9.3
+    21:47:46  Registered adapter: duckdb=1.9.2
+    21:47:47  Found 1 model, 7 data tests, 1 source, 693 macros
+    21:47:47  
+    21:47:47  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:47:47  
+    21:47:47  1 of 7 START test accepted_values_matches_surface__Grass__Hard__Clay__Carpet ... [RUN]
+    21:47:47  1 of 7 PASS accepted_values_matches_surface__Grass__Hard__Clay__Carpet ......... [<font color="#00CD00">PASS</font> in 0.04s]
+    21:47:47  2 of 7 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [RUN]
+    21:47:47  2 of 7 PASS dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [<font color="#00CD00">PASS</font> in 0.03s]
+    21:47:47  3 of 7 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:47:47  3 of 7 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.05s]
+    21:47:47  4 of 7 START test not_matches_surface .......................................... [RUN]
+    21:47:47  4 of 7 ERROR not_matches_surface ............................................... [<font color="#CD0000">ERROR</font> in 0.01s]
+    21:47:47  5 of 7 START test not_null_matches_loser_id .................................... [RUN]
+    21:47:47  5 of 7 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:47:47  6 of 7 START test not_null_matches_tourney_id .................................. [RUN]
+    21:47:47  6 of 7 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.01s]
+    21:47:47  7 of 7 START test not_null_matches_winner_id ................................... [RUN]
+    21:47:47  7 of 7 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:47:47  
+    21:47:47  Finished running 7 data tests in 0 hours 0 minutes and 0.24 seconds (0.24s).
+    21:47:47  
+    21:47:47  <font color="#CD0000">Completed with 1 error, 0 partial successes, and 0 warnings:</font>
+    21:47:47  
+    21:47:47    Compilation Error in test not_matches_surface (models/atp/schema.yml)
+      &apos;test_not&apos; is undefined. This can happen when calling a macro that does not exist. Check for typos and/or install package dependencies with &quot;dbt deps&quot;.
+    21:47:47  
+    21:47:47  Done. PASS=6 WARN=0 ERROR=1 SKIP=0 TOTAL=7
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ dbt test
+    21:48:34  Running with dbt=1.9.3
+    21:48:34  Registered adapter: duckdb=1.9.2
+    21:48:34  Found 1 model, 7 data tests, 1 source, 693 macros
+    21:48:34  
+    21:48:34  Concurrency: 1 threads (target=&apos;dev&apos;)
+    21:48:34  
+    21:48:34  1 of 7 START test accepted_values_matches_surface__Grass__Hard__Clay__Carpet ... [RUN]
+    21:48:34  1 of 7 PASS accepted_values_matches_surface__Grass__Hard__Clay__Carpet ......... [<font color="#00CD00">PASS</font> in 0.03s]
+    21:48:34  2 of 7 START test dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [RUN]
+    21:48:34  2 of 7 PASS dbt_expectations_expect_column_min_to_be_between_matches_tourney_date__CAST_2023_12_31_AS_DATE___CAST_1967_12_01_AS_DATE_  [<font color="#00CD00">PASS</font> in 0.03s]
+    21:48:34  3 of 7 START test dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [RUN]
+    21:48:34  3 of 7 PASS dbt_expectations_expect_column_values_to_be_of_type_matches_tourney_date__date  [<font color="#00CD00">PASS</font> in 0.04s]
+    21:48:34  4 of 7 START test not_null_matches_loser_id .................................... [RUN]
+    21:48:34  4 of 7 PASS not_null_matches_loser_id .......................................... [<font color="#00CD00">PASS</font> in 0.02s]
+    21:48:34  5 of 7 START test not_null_matches_surface ..................................... [RUN]
+    21:48:34  5 of 7 PASS not_null_matches_surface ........................................... [<font color="#00CD00">PASS</font> in 0.06s]
+    21:48:34  6 of 7 START test not_null_matches_tourney_id .................................. [RUN]
+    21:48:34  6 of 7 PASS not_null_matches_tourney_id ........................................ [<font color="#00CD00">PASS</font> in 0.02s]
+    21:48:34  7 of 7 START test not_null_matches_winner_id ................................... [RUN]
+    21:48:35  7 of 7 PASS not_null_matches_winner_id ......................................... [<font color="#00CD00">PASS</font> in 0.01s]
+    21:48:35  
+    21:48:35  Finished running 7 data tests in 0 hours 0 minutes and 0.29 seconds (0.29s).
+    21:48:35  
+    21:48:35  <font color="#00CD00">Completed successfully</font>
+    21:48:35  
+    21:48:35  Done. PASS=7 WARN=0 ERROR=0 SKIP=0 TOTAL=7
+    (.venv) <font color="#00CD00"><b>vant@MOOVE15</b></font>:<font color="#0000EE"><b>~/Documents/learning/tuto-dbt-duckdb/dbt_transformations</b></font>$ 
+    
+    </pre>
